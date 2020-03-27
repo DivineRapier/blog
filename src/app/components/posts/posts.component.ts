@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService, Metadata } from 'app/metadata.service';
+// import { Metadata, PostsService } from '../../posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  metadata: Metadata[];
+
+  constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
+    this.postsService.getPostList().subscribe((metadata: Metadata[]) => this.metadata = metadata);
   }
-
 }
