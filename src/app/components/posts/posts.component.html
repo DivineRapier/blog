@@ -34,7 +34,7 @@
             <span>{{ item.price | currency }}</span>
         </div> -->
         <div class = "posts-metadata" *ngFor = "let meta of metadata">
-            <p>{{ meta.name }}</p>
+            <a [routerLink] = "['/post', meta.name]">{{ meta.name }}</a>
             <p>{{ meta.path }}</p>
             <p>{{ meta.tags }}</p>
         </div>

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NouisliderModule } from 'ng2-nouislider';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 
 import { BasicelementsComponent } from '../basicelements/basicelements.component';
 import { NavigationComponent } from '../navigation/navigation.component';
@@ -23,9 +23,14 @@ import { NgbdModalContent } from '../modal/modal.component';
 })
 export class PostComponent implements OnInit {
 
-  constructor() { }
+  name: String;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+this.route.paramMap.subscribe(param => {
+  this.name = param.get('name');
+});
   }
 
 }
